@@ -20,30 +20,30 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
-      <h1>APP</h1>
-      <Routes>
-        <Route
-          path="/"
-          element={
-          <RequireAuth> 
-              <Home/>
-          </RequireAuth>
-          }
-        />
-        <Route
-          path="/login"
-          element={<Login />}
-        />
-        <Route
-          path="/register"
-          element={<Register />}
-        />
-        <Route
-          path="*"
-          element={<NotFound />}
-        />
-      </Routes>
+        <Navbar />
+        <h1>APP</h1>
+        <Routes>
+              <Route
+                path="/"
+                element={
+                    <RequireAuth> 
+                        <Home/>
+                    </RequireAuth>
+                }
+              />
+              <Route
+                path="/login"
+                element={<Login />}
+              />
+              <Route
+                path="/register"
+                element={<Register />}
+              />
+              <Route
+                path="*"
+                element={<NotFound />}
+          />
+        </Routes>
     </>
   );
 };
