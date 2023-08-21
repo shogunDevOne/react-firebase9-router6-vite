@@ -4,10 +4,9 @@ import { auth } from "../firebase"
 
 export  const UserContext = createContext()
 
-const UserProvider = ({children}) => {
+const UserProvider = ({children}) => {  // metodo para detecatar en todo momento al usuario 
 
-    const[user, setUser] = useState(false)
-
+    const[user, setUser] = useState(false)  // Usuario como estado global 
     useEffect(() => {
        const unsuscribe = onAuthStateChanged(auth, user => {
         console.log(user)
