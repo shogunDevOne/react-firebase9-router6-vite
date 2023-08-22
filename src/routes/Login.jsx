@@ -7,6 +7,10 @@ import { formValidate } from "../utils/formValidate";
 
 import FormError from "../components/FormError";
 import FormInput from "../components/FormInput";
+import Title from "../components/Title";
+import ButtonForm from "../components/ButtonForm";
+
+
 
 const Login = () => {
     const { loginUser } = useContext(UserContext);
@@ -25,17 +29,14 @@ const Login = () => {
             await loginUser(email, password);
             navigate("/");
         } catch (error) {
-            console.log(error.code);
-            setError("firebase", {
-                message: erroresFirebase(error.code),
-            });
+            const {code, message} = erroresFirebase(error.code)
+            setError(code, {message})
         }
     };
 
     return (
         <>
-            <h1>Login</h1>
-            <FormError error={errors.firebase} />
+            <Title text="Iniciar Sesion" />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormInput
                     type="email"
@@ -44,6 +45,8 @@ const Login = () => {
                         required,
                         pattern: patternEmail,
                     })}
+                    label="Ingresa tu correo"
+                    error={errors.email}
                 >
                     <FormError error={errors.email} />
                 </FormInput>
@@ -55,10 +58,12 @@ const Login = () => {
                         minLength,
                         validate: validateTrim,
                     })}
+                    label="Ingresa tu contraseña"
+                    error={errors.password}
                 >
                     <FormError error={errors.password} />
                 </FormInput>
-                <button type="submit">Login</button>
+                <ButtonForm text="Acceder" type="submit" />   
             </form>
         </>
     );
