@@ -9,7 +9,7 @@ const UserProvider = ({children}) => {  // metodo para detecatar en todo momento
     const[user, setUser] = useState(false)  // Usuario como estado global 
     useEffect(() => {
        const unsuscribe = onAuthStateChanged(auth, user => {
-        console.log(user)
+        // console.log(user)
         if(user){
             const {email, photoURL, displayName, uid} = user
             setUser({email, photoURL, displayName, uid})

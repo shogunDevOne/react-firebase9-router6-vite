@@ -1,7 +1,9 @@
+import Title from "../components/Title"
+
 const NotFound  = () => { 
     return (
         <>
-            <h1>NotFound</h1>
+            <Title text="404" />
         </>
     )
 };
